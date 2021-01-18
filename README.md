@@ -61,7 +61,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
              pLength: 20, // Float. The length of the parcel in cm (longest dimension)
              pWidth: 20, // Float. The width of the parcel in cm (second longest dimension)
              pHeight: 20, // Float. The height of the parcel in cm (shortest dimension)
-             exportReason: 'SOLD', // String. Please see note
+             exportReason: 'SOLD', // String. Please see note. Only required for international
              contents: [
                 {
                    description: 'This is my description', // String. Description of the item
@@ -160,7 +160,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
              pLength: 20, // Float. The length of the parcel in cm (longest dimension)
              pWidth: 20, // Float. The width of the parcel in cm (second longest dimension)
              pHeight: 20, // Float. The height of the parcel in cm (shortest dimension)
-             exportReason: 'SOLD', // String. Please see note
+             exportReason: 'SOLD', // String. Please see note. Only required for international
              contents: [
                 {
                    description: 'This is my description', // String. Description of the item
