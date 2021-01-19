@@ -35,24 +35,21 @@ DESPATCHBAYAUTH=Basic RMks...yNzg...CRj..Dg
 USERAGENT=WhatEverIWantToBeKnownAs
 ````
 
-Then, require `xmlTemplates` and the `doAjax` method
+Then, require `despatchjs` 
 ```javascript
-    const xmlTemplates = require('./xml-templates')
-    const doAjax = require('./ajax')
+    const despatchjs = require('./xml-templates')
 ```
 *Please note* : index.js at the root is full of example code.
 
-`xmlTemplates` exports an Object of methods used to generate an XML template for each SOAP method.
-`xmlTemplate` method names match the SOAP Method names, but in camelCase - eg...`AddShipment` becomes `addShipment`.
+`despatchjs` exports an Object of methods for each SOAP method.
+`despatchjs` method names match the SOAP Method names, but in camelCase - eg...`AddShipment` becomes `addShipment`.
 
-To create an XML template, simply pass a data object to the chosen method.
+Simply pass a data object to the chosen method to make to POST to the SOAP method.
 
-    const xml = xmlTemplates.addShipment(data)
-    return await doAjax(xml)
+    return await await despatchjs.addShipment(data)
+ 
 
-To post to Despatch Bay, pass the XML into the doAjax method
-
-Destructuring and named parameters are used throughout should Despatch Bay update their API etc. in future.
+Internally, destructuring and named parameters are used throughout should Despatch Bay update their API etc. in future.
 
 Despatch Bay API calls should be made in the following order:
 
@@ -98,8 +95,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
    }
 }
 
-const xml = xmlTemplates.getAvailableServices(data)
-return await doAjax(xml)
+return await despatchjs.getAvailableServices(data)
 ````
  
 ```javascript
@@ -137,8 +133,8 @@ return await doAjax(xml)
       SenderAddressID: '000000',  // Sender Address not required as all methods default to SENDERADDRESSID in .env. Add ID if you want to override.
       courierID: '99', // taken from getAvailableServices
    }
-   const xml = xmlTemplates.getAvailableCollectionDates(data)
-   return await doAjax(xml)
+   return await despatchjs.getAvailableCollectionDates(data)
+   
    ```
 
 ```javascript
@@ -197,9 +193,9 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
        }
    }
 
-   const xml = xmlTemplates.addShipment(data)
+   return await despatchjs.addShipment(data)
 
-   return await doAjax(xml)
+   
 ```
 
 
@@ -218,8 +214,8 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
    const data = {
       shipmentID: '134876-1691',  // Taken from addShipment. You can also pass in an Array of shippingIDs if you wish
    }
-   const xml = xmlTemplates.bookShipments(data)
-   return await doAjax(xml)     
+   return await despatchjs.bookShipments(data)
+        
 ```   
 ```javascript
             {
@@ -285,8 +281,8 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
    const data = {
       shipmentID: '134876-1691'
    }
-   const xml = xmlTemplates.cancelShipment(data)
-   return await doAjax(xml)
+   return await despatchjs.cancelShipment(data)
+   
 ```   
  ```javascript
             {
@@ -305,8 +301,8 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
    const data = {
       collectionID: 'DE-301',
    }
-   const xml = xmlTemplates.getCollection(data)
-   return await doAjax(xml)
+   return await despatchjs.getCollection(data)
+   
 ```   
 ```javascript
             {
@@ -339,8 +335,8 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
    const data = {
       shipmentID: '134876-1691'
    }
-   const xml = xmlTemplates.getShipment(data)
-   return await doAjax(xml)
+   return await despatchjs.getShipment(data)
+   
 ```   
 ```javascript
             {
