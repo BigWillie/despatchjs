@@ -40,6 +40,7 @@ Then, require `xmlTemplates` and the `doAjax` method
     const xmlTemplates = require('./xml-templates')
     const doAjax = require('./ajax')
 ```
+*Please note* : index.js at the root is full of example code.
 
 `xmlTemplates` exports an Object of methods used to generate an XML template for each SOAP method.
 `xmlTemplate` method names match the SOAP Method names, but in camelCase - eg...`AddShipment` becomes `addShipment`.
