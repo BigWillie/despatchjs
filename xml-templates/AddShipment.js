@@ -28,7 +28,7 @@ module.exports = ({ serviceID, parcels, orderID, collectionDate, senderAddressID
                     return `<Content>
                     <Description>${x.description}</Description>
                     <UnitQuantity>${x.unitQuantity}</UnitQuantity>
-                    <UnitWeight>${x.unitQuantity}</UnitWeight>
+                    <UnitWeight>${x.unitWeight}</UnitWeight>
                     <UnitValue>${x.unitValue}</UnitValue>
                     <!-- Optional for domestic -->
                     ${x.tariffCode ? '<TariffCode>' + x.tariffCode + '</TariffCode>' : ''}

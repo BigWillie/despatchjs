@@ -28,7 +28,7 @@ module.exports = ({ parcels, senderAddressID = process.env.SENDERADDRESSID, reci
                     return `<Content>
                     <Description>${x.description}</Description>
                     <UnitQuantity>${x.unitQuantity}</UnitQuantity>
-                    <UnitWeight>${x.unitQuantity}</UnitWeight>
+                    <UnitWeight>${x.unitWeight}</UnitWeight>
                     <UnitValue>${x.unitValue}</UnitValue>
                     <!-- Optional for domestic -->
                     ${x.tariffCode ? '<TariffCode>' + x.tariffCode + '</TariffCode>' : ''}
