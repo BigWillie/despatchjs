@@ -55,6 +55,13 @@ Internally, destructuring and named parameters are used throughout should Despat
 
 Despatch Bay API calls should be made in the following order:
 
+* 1. getAvailableServices
+* 2. getAvailableCollectionDates (pass in the courier ID obtained from step 1)
+* 3. addShipment (pass in the serviceID - obtained from step 1, and the collectionDate - obtained from step 2)
+* 4. bookShipments (pass in the shipmentID - obtained from step 3. Bookshipments can also take an Array of * shipmentIDs should you wish to save on API calls)
+
+Additional methods exist to cancel a shipment, get information about a parcel collection, and get information about a shipment.
+
 ***
 ### 1. getAvailableServices
 
@@ -278,7 +285,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
 
 ## Additional Methods
 
-#### cancelShipping
+### cancelShipping
 ```javascript
    const data = {
       shipmentID: '134876-1691'
@@ -332,7 +339,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
             }
 ````
 
-#### getShipment
+### getShipment
 ```javascript
    const data = {
       shipmentID: '134876-1691'
