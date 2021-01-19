@@ -49,9 +49,9 @@ To create an XML template, simply pass a data object to the chosen method.
     const xml = xmlTemplates.addShipment(data)
     return await doAjax({ xml, method: 'addShipment' })
 
-To post to Desptach Bay, the XML and method name is passed to the `doAjax` method.
+To post to Despatch Bay, the XML and method name is passed to the `doAjax` method.
 
-Destructuring and named parameters are used throughout should Desptach Bay update their API etc. in future.
+Destructuring and named parameters are used throughout should Despatch Bay update their API etc. in future.
 
 Despatch Bay API calls should be made in the following order:
 
