@@ -7,7 +7,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki
 https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service
 
 
-It's been a busy week at RHQ Zombie Co - the UK subsidiary of Reaper Miniatures. We book all our shipments through a third party shipping API. We send a lot of parcels to the EU. Unfortunately, at the time of writing, the Shipping API does not handle the new rules forced upon us by Brexit.
+It's been a busy week at RHQ Zombie Co - the UK subsidiary of Reaper Miniatures. We book all our shipments through a third party shipping API. We send a lot of parcels to the EU. Unfortunately, at the time of writing, the Shipping API does not handle the new rules as a result of Brexit.
 
 So we have switched to Despatch Bay for our UK and EU parcels. Despatch Bay is local to us and their API is Brexit ready.
 
