@@ -1,4 +1,6 @@
-module.exports = ({courierID, SenderAddressID = process.env.SENDERADDRESSID }) => {
+const doAjax = require('./ajax')
+
+module.exports = async ({courierID, SenderAddressID = process.env.SENDERADDRESSID }) => {
     const xml =  `<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:despatchbay">
     <soapenv:Header/>
     <soapenv:Body>
@@ -11,9 +13,10 @@ module.exports = ({courierID, SenderAddressID = process.env.SENDERADDRESSID }) =
     </soapenv:Body>
 </soapenv:Envelope>`
 
-return {
+const data = {
     xml,
     parserKey: 'getAvailableCollectionDates'
 }
+return await doAjax(data)
 
 }

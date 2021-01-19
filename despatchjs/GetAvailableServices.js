@@ -1,4 +1,6 @@
-module.exports = ({ parcels, senderAddressID = process.env.SENDERADDRESSID, recipientAddress}) => {
+const doAjax = require('./ajax')
+
+module.exports = async ({ parcels, senderAddressID = process.env.SENDERADDRESSID, recipientAddress}) => {
 	
 	// JS doesn't have private methods - so encapsulate these here
 
@@ -70,11 +72,11 @@ module.exports = ({ parcels, senderAddressID = process.env.SENDERADDRESSID, reci
     </soapenv:Body>
 </soapenv:Envelope>`
 
-return {
+const data = {
     xml,
     parserKey : 'getAvailableServices'
 }
-
+return await doAjax(data)
 
 
 }

@@ -1,4 +1,6 @@
-module.exports = ({ serviceID, parcels, orderID, collectionDate, senderAddressID = process.env.SENDERADDRESSID, recipientAddress, followShipment }) => {
+const doAjax = require('./ajax')
+
+module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAddressID = process.env.SENDERADDRESSID, recipientAddress, followShipment }) => {
 
 
     const buildRecipientAddress = ({ recipientName, recipientTelephone, recipientEmail, companyName, street, locality, townCity, county, postalCode, countryCode }) => {
@@ -75,10 +77,12 @@ module.exports = ({ serviceID, parcels, orderID, collectionDate, senderAddressID
             </soapenv:Body>
         </soapenv:Envelope>`
 
-    return {
+    const data = {
         xml,
         parserKey: 'addShipment'
     }
+
+    return await doAjax(data)
 
 
 }

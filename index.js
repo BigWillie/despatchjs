@@ -1,5 +1,5 @@
-const xmlTemplates = require('./xml-templates')
-const doAjax = require('./ajax')
+const despatchjs = require('./despatchjs')
+
 
 
 const addShipment = async () => {
@@ -49,9 +49,8 @@ const addShipment = async () => {
       countryCode: 'GB', // String. ISO 3166-1 alpha-2 code
    }
 
-   const xml = xmlTemplates.addShipment(data)
+   return await despatchjs.addShipment(data)
 
-   return await doAjax(xml)
 
 }
 
@@ -61,8 +60,8 @@ const bookShipment = async () => {
    const data = {
       shipmentID: '134876-1691',  // will also take an array of IDs
    }
-   const xml = xmlTemplates.bookShipments(data)
-   return await doAjax(xml)
+   return await despatchjs.bookShipments(data)
+
 }
 
 
@@ -70,8 +69,7 @@ const cancelShipment = async () => {
    const data = {
       shipmentID: '134876-1691'
    }
-   const xml = xmlTemplates.cancelShipment(data)
-   return await doAjax(xml)
+   return await despatchjs.cancelShipment(data)
 }
 
 
@@ -80,8 +78,7 @@ const getAvailableCollectionDates = async () => {
      // SenderAddressID: '000000',  // Sender Address not required as we only have one location - 288918
       courierID: '99',
    }
-   const xml = xmlTemplates.getAvailableCollectionDates(data)
-   return await doAjax(xml)
+   return await despatchjs.getAvailableCollectionDates(data)
 }
 
 
@@ -130,8 +127,7 @@ const getAvailableServices = async () => {
       countryCode: 'GB', // String. ISO 3166-1 alpha-2 code
    }
 
-   const xml = xmlTemplates.getAvailableServices(data)
-   return await doAjax(xml)
+   return await despatchjs.getAvailableServices(data)
 }
 
 
@@ -140,8 +136,7 @@ const getCollection = async () => {
    const data = {
       collectionID: 'DE-301',
    }
-   const xml = xmlTemplates.getCollection(data)
-   return await doAjax(xml)
+   return await despatchjs.getCollection(data)
 }
 
 
@@ -150,8 +145,7 @@ const getShipment = async () => {
    const data = {
       shipmentID: '134876-1691'
    }
-   const xml = xmlTemplates.getShipment(data)
-   return await doAjax(xml)
+   return await despatchjs.getShipment(data)
 }
 
 

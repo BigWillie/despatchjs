@@ -1,4 +1,6 @@
-module.exports = ({ shipmentID }) => {
+const doAjax = require('./ajax')
+
+module.exports = async ({ shipmentID }) => {
 
     let shipmentIDs; // mutation - gross....
 
@@ -22,9 +24,10 @@ module.exports = ({ shipmentID }) => {
     </soapenv:Body>
 </soapenv:Envelope>`
 
-    return {
+    const data = {
         xml,
         parserKey: 'bookShipments'
     }
+    return await doAjax(data)
 
 }

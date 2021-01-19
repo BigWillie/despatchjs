@@ -1,4 +1,6 @@
-module.exports = ({collectionID}) => {
+const doAjax = require('./ajax')
+
+module.exports = async ({collectionID}) => {
 
     const xml =  `<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:despatchbay">
     <soapenv:Header/>
@@ -9,9 +11,11 @@ module.exports = ({collectionID}) => {
     </soapenv:Body>
 </soapenv:Envelope>`
 
-    return {
+    const data = {
         xml,
         parserKey: 'getCollection'
     }
+
+    return await doAjax(data)
 
 }
