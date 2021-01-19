@@ -44,9 +44,11 @@ Then, require `despatchjs`
 `despatchjs` exports an Object of methods for each SOAP method.
 `despatchjs` method names match the SOAP Method names, but in camelCase - eg...`AddShipment` becomes `addShipment`.
 
-Simply pass a data object to the chosen method to make to POST to the SOAP method.
-
+Simply pass an object into the SOAP method:
+```javascript
     return await await despatchjs.addShipment(data)
+```
+...and get JSON back!
  
 
 Internally, destructuring and named parameters are used throughout should Despatch Bay update their API etc. in future.
