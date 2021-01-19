@@ -64,7 +64,7 @@ Despatch Bay API calls should be made in the following order:
 
 Additional methods exist to cancel a shipment, get information about a parcel collection, and get information about a shipment.
 
-<code>&ast;</code> Currently, only the first available date is returned. 
+<code>&ast;</code> Currently, only the first available collection date is returned. 
 ***
 ### 1. getAvailableServices
 
