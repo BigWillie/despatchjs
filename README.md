@@ -60,7 +60,7 @@ Despatch Bay API calls should be made in the following order:
 
 ```javascript
 const data = {
-      SenderAddressID: '000000',  // Sender Address not required as all methods default to our location.
+      SenderAddressID: '000000',  // Sender Address not required as all methods default to SENDERADDRESSID in .env. Add ID if you want to override.
 /* International: When sending outside the UK (Including the all EU destinations, Channel Islands, Republic of Ireland and Northern Ireland) all fields of `parcels` become mandatory. For `exportReason` Please see:
 https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-reasons */
       parcels : [
@@ -133,7 +133,7 @@ return await doAjax({ xml, method: 'getAvailableServices' })
 ### 2. getAvailableCollectionDates
 ```javascript
    const data = {
-      SenderAddressID: '000000',  // Sender Address not required as defaults to our location
+      SenderAddressID: '000000',  // Sender Address not required as all methods default to SENDERADDRESSID in .env. Add ID if you want to override.
       courierID: '99', // taken from getAvailableServices
    }
    const xml = xmlTemplates.getAvailableCollectionDates(data)
@@ -155,7 +155,7 @@ Note - adding a shipment does not book the shipment... Adding a shipment returns
 
 ```javascript
    const data = {
-      SenderAddressID: '000000',  // Sender Address not required as we only have one location - 288918
+      SenderAddressID: '000000',  // Sender Address not required as all methods default to SENDERADDRESSID in .env. Add ID if you want to override.
       orderID: '12345',
       serviceID: '9992',  // Taken from getAvailableServices
       collectionDate: '2021-01-18', // taken from getAvailableCollectionDates
