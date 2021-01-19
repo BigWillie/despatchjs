@@ -54,8 +54,7 @@ module.exports = ({ serviceID, parcels, orderID, collectionDate, senderAddressID
         return `<Parcels xsi:type="urn:ArrayOfParcelType" soapenc:arrayType="urn:ParcelType[]">${parcelArray}</Parcels>`
     }
 
-
-    return `<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:despatchbay" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+    const xml = `<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:despatchbay" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
             <soapenv:Header/>
             <soapenv:Body>
                 <urn:AddShipment soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
@@ -75,6 +74,11 @@ module.exports = ({ serviceID, parcels, orderID, collectionDate, senderAddressID
                 </urn:AddShipment>
             </soapenv:Body>
         </soapenv:Envelope>`
+
+    return {
+        xml,
+        parserKey: 'addShipment'
+    }
 
 
 }

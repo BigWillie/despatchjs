@@ -51,7 +51,7 @@ const addShipment = async () => {
 
    const xml = xmlTemplates.addShipment(data)
 
-   return await doAjax({ xml, method: 'addShipment' })
+   return await doAjax(xml)
 
 }
 
@@ -62,7 +62,7 @@ const bookShipment = async () => {
       shipmentID: '134876-1691',  // will also take an array of IDs
    }
    const xml = xmlTemplates.bookShipments(data)
-   return await doAjax({ xml, method: 'bookShipment' })
+   return await doAjax(xml)
 }
 
 
@@ -71,7 +71,7 @@ const cancelShipment = async () => {
       shipmentID: '134876-1691'
    }
    const xml = xmlTemplates.cancelShipment(data)
-   return await doAjax({ xml, method: 'cancelShipment' })
+   return await doAjax(xml)
 }
 
 
@@ -81,7 +81,7 @@ const getAvailableCollectionDates = async () => {
       courierID: '99',
    }
    const xml = xmlTemplates.getAvailableCollectionDates(data)
-   return await doAjax({ xml, method: 'getAvailableCollectionDates' })
+   return await doAjax(xml)
 }
 
 
@@ -131,7 +131,7 @@ const getAvailableServices = async () => {
    }
 
    const xml = xmlTemplates.getAvailableServices(data)
-   return await doAjax({ xml, method: 'getAvailableServices' })
+   return await doAjax(xml)
 }
 
 
@@ -141,7 +141,7 @@ const getCollection = async () => {
       collectionID: 'DE-301',
    }
    const xml = xmlTemplates.getCollection(data)
-   return await doAjax({ xml, method: 'getCollection' })
+   return await doAjax(xml)
 }
 
 
@@ -151,7 +151,7 @@ const getShipment = async () => {
       shipmentID: '134876-1691'
    }
    const xml = xmlTemplates.getShipment(data)
-   return await doAjax({ xml, method: 'getShipment' })
+   return await doAjax(xml)
 }
 
 

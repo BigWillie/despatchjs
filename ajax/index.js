@@ -25,7 +25,7 @@ const xmlParserOptions = {
 };
 
 
-const dataPlucker = ({data, method}) => {
+const dataPlucker = ({data, parserKey}) => {
    const SOAPMethods = {
       getAvailableServices() {
          return data.Envelope.Body.GetAvailableServicesResponse.return.item
@@ -52,16 +52,16 @@ const dataPlucker = ({data, method}) => {
          return data.Envelope.Body.GetShipmentResponse
       }
    }
-   if (typeof SOAPMethods[method] === 'undefined') {
+   if (typeof SOAPMethods[parserKey] === 'undefined') {
       return data
    }
-   return SOAPMethods[method]()
+   return SOAPMethods[parserKey]()
 }
 
 
 
 // a single method to post the XML, and parse it
-module.exports = async ({method, xml}) => {
+module.exports = async ({xml, parserKey}) => {
 
     const url = 'https://api.despatchbay.com/soap/v16/shipping?wsdl';
 
@@ -78,7 +78,7 @@ module.exports = async ({method, xml}) => {
        const data = {
           status: response.status,
           statusText: response.statusText,
-          payload: dataPlucker( {data : jsonObj , method})
+          payload: dataPlucker( {data : jsonObj , parserKey})
        }
        return data
     } catch(err) {

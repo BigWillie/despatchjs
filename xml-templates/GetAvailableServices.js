@@ -55,7 +55,7 @@ module.exports = ({ parcels, senderAddressID = process.env.SENDERADDRESSID, reci
     }
 
 
-	return `<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:despatchbay" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+	const xml = `<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:despatchbay" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
     <soapenv:Header/>
     <soapenv:Body>
         <urn:GetAvailableServices soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
@@ -70,6 +70,10 @@ module.exports = ({ parcels, senderAddressID = process.env.SENDERADDRESSID, reci
     </soapenv:Body>
 </soapenv:Envelope>`
 
+return {
+    xml,
+    parserKey : 'getAvailableServices'
+}
 
 
 
