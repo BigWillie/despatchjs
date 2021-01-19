@@ -6,6 +6,15 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki
 
 https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service
 
+
+It's been a busy week at RQH Zombie Co - the UK subsidiary of Reaper Miniatures. We book all our shipments through a third party shipping API. We send a lot of parcels to the EU. Unfortunately, at the time of writing, the Shipping API does not handle the new rules forced upon us by Brexit.
+
+So we have switched to Despatch Bay for our UK and EU parcels. Despatch Bay is local too us, offers a pick up service, and their API is Brexit ready.
+
+This is a very think wrapper for Despatch Bays Shipping Service SOAP API.
+
+Very simple to use - POST a data object, and receive JSON.
+
 The following Despatch Bay SOAP methods are supported:
 
 - GetAvailableServices
@@ -148,8 +157,8 @@ Note - adding a shipment does not book the shipment... Adding a shipment returns
    const data = {
       SenderAddressID: '000000',  // Sender Address not required as we only have one location - 288918
       orderID: '12345',
-      serviceID: '9992',
-      collectionDate: '2021-01-18',
+      serviceID: '9992',  // Taken from getAvailableServices
+      collectionDate: '2021-01-18', // taken from getAvailableCollectionDates
       followShipment: false, // Follow the shipment on the Despatch Bay dashboard (optional)
 /* International: When sending outside the UK (Including the all EU destinations, Channel Islands, Republic of Ireland and Northern Ireland) all fields of `parcels` become mandatory. For `exportReason` Please see:
 https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-reasons */
@@ -206,7 +215,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
 ### 4. bookShipments
 ```javascript
    const data = {
-      shipmentID: '134876-1691',  // will also take an array of IDs
+      shipmentID: '134876-1691',  // Taken from addShipment. You can also pass in an Array of shippingIDs if you wish
    }
    const xml = xmlTemplates.bookShipments(data)
    return await doAjax({ xml, method: 'bookShipment' })
