@@ -11,7 +11,7 @@ It's been a busy week at RQH Zombie Co - the UK subsidiary of Reaper Miniatures.
 
 So we have switched to Despatch Bay for our UK and EU parcels. Despatch Bay is local to us and their API is Brexit ready.
 
-This is a very think wrapper for Despatch Bays Shipping Service SOAP API.
+This is a very think wrapper for Despatch Bay's Shipping Service SOAP API.
 
 Very simple to use - POST a data object, and receive JSON.
 
