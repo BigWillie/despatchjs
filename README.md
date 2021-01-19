@@ -46,7 +46,7 @@ Then, require `despatchjs`
 
 Simply pass an object into the SOAP method:
 ```javascript
-    return await await despatchjs.addShipment(data)
+    return await despatchjs.addShipment(data)
 ```
 ...and get JSON back!
  
