@@ -53,15 +53,18 @@ Simply pass an object into the SOAP method:
 
 Internally, destructuring and named parameters are used throughout should Despatch Bay update their API etc. in future.
 
+## API Flow
+
 Despatch Bay API calls should be made in the following order:
 
 1. getAvailableServices
-2. getAvailableCollectionDates (pass in the courier ID obtained from step 1)
+2. getAvailableCollectionDates<code>&ast;</code> (pass in the courier ID obtained from step 1)
 3. addShipment (pass in the serviceID - obtained from step 1, and the collectionDate - obtained from step 2)
 4. bookShipments (pass in the shipmentID - obtained from step 3. Bookshipments can also take an Array of * shipmentIDs should you wish to save on API calls)
 
 Additional methods exist to cancel a shipment, get information about a parcel collection, and get information about a shipment.
 
+<code>&ast;</code> Currently, only the first available date is returned. 
 ***
 ### 1. getAvailableServices
 
