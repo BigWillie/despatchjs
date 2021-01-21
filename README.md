@@ -25,6 +25,8 @@ The following Despatch Bay SOAP methods are supported:
 - BookShipments
 - CancelShipment
 
+- GetCustomsDocument (not a SOAP method... a GET method to Despatch Bays new document API)
+
 Create a .env file containing your default sender address ID (location), your auth - encoded as base64 (eg: username:password), and your userAgent string.
 
 eg:
@@ -327,7 +329,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
       collectionID: 'DE-301',
    }
    return await despatchjs.getCollection(data)
-   
+
 ```   
 ```javascript
             {
