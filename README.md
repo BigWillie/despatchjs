@@ -290,7 +290,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
             }
 ````
 
-### 5. getCustomsDocumet - applicable for international bookings
+### 5. getCustomsDocument - applicable for international bookings
 ```javascript
 
    const data = {
