@@ -61,6 +61,8 @@ Despatch Bay API calls should be made in the following order:
 2. getAvailableCollectionDates<code>&ast;</code> (pass in the courier ID obtained from step 1)
 3. addShipment (pass in the serviceID - obtained from step 1, and the collectionDate - obtained from step 2)
 4. bookShipments (pass in the shipmentID - obtained from step 3. Bookshipments can also take an Array of * shipmentIDs should you wish to save on API calls)
+-- if international:
+5. getCustomsDocument (pass in the shipmentDocumentID - obtained from step 4.)
 
 Additional methods exist to cancel a shipment, get information about a parcel collection, and get information about a shipment.
 
@@ -285,6 +287,17 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
               }
             }
 ````
+
+### 5. getCustomsDocumet - applicable for international bookings
+```javascript
+
+   const data = {
+      shipmentDocumentID: "ds2ahSjXwCdX8U"
+   }
+   return await despatchjs.getCustomsDocument(data)
+```
+
+- returns PDF of customs document
 
 ## Additional Methods
 

@@ -5,6 +5,7 @@ const getAvailableCollectionDates = require("./GetAvailableCollectionDates")
 const getAvailableServices = require("./GetAvailableServices")
 const getCollection = require("./GetCollection")
 const getShipment = require("./GetShipment")
+const getCustomsDocument = require("./GetCustomsDocument")
 
 module.exports = {
     addShipment,
@@ -13,5 +14,6 @@ module.exports = {
     getAvailableCollectionDates,
     getAvailableServices,
     getCollection,
-    getShipment
+    getShipment,
+    getCustomsDocument
 }

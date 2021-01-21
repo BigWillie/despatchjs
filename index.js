@@ -148,6 +148,13 @@ const getShipment = async () => {
    return await despatchjs.getShipment(data)
 }
 
+const getCustomsDocument = async () => {
+   const data = {
+      shipmentDocumentID: "ds2ahSjXwCdX8U"
+   }
+   return await despatchjs.getCustomsDocument(data)
+}
+
 
 
 /* Run the methods */
@@ -183,6 +190,7 @@ const testing = async () => {
    console.log('7. get shipment')
    const GetShipment = await getShipment()
    console.log(JSON.stringify(GetShipment, null, 2))
+
 }
 
 testing()
