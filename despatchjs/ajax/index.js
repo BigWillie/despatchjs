@@ -39,7 +39,7 @@ const dataPlucker = ({data, parserKey}) => {
          // must book shipment with ID to book it.
          return data.Envelope.Body.AddShipmentResponse
       },
-      bookShipment() {
+      bookShipments() {
          return data.Envelope.Body.BookShipmentsResponse
       },
       cancelShipment() {
