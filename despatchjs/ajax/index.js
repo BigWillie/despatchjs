@@ -28,7 +28,10 @@ const xmlParserOptions = {
 const dataPlucker = ({data, parserKey}) => {
    const SOAPMethods = {
       getAvailableServices() {
-         return data.Envelope.Body.GetAvailableServicesResponse.return.item
+         const services = data.Envelope.Body.GetAvailableServicesResponse.return.item
+         // API will return either an object or an array - so this makes for consistency
+         // by always returning an array
+         return !Array.isArray(services) ? [services] : services
       },
       getAvailableCollectionDates() {
          // Returns the next available date
