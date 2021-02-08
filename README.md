@@ -206,7 +206,8 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
           county: 'London', // String. County
           postalCode: 'SW1A1AA', // String. Postal code (optional for countries without postcodes)
           countryCode: 'GB', // String. ISO 3166-1 alpha-2 code
-       }
+       },
+      recipientEoriNumber: 'XXXXXX' // EORI number of recipient (optional - if recipient is an EU business)
    }
 
    return await despatchjs.addShipment(data)

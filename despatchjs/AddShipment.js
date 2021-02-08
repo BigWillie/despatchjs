@@ -1,6 +1,6 @@
 const doAjax = require('./ajax')
 
-module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAddressID = process.env.SENDERADDRESSID, recipientAddress, followShipment }) => {
+module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAddressID = process.env.SENDERADDRESSID, recipientAddress, followShipment, recipientEoriNumber }) => {
 
 
     const buildRecipientAddress = ({ recipientName, recipientTelephone, recipientEmail, companyName, street, locality, townCity, county, postalCode, countryCode }) => {
@@ -72,6 +72,8 @@ module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAdd
                         </SenderAddress>
                         ${buildRecipientAddress(recipientAddress)}
                         ${followShipment ? '<FollowShipment xsi:type="xsd:boolean">' + followShipment + '</FollowShipment>' : ''}
+                        ${recipientEoriNumber ? '<RecipientEoriNumber xsi:type="xsd:string">' + recipientEoriNumber + '</RecipientEoriNumber>' : ''}
+                        </Shipment>
                     </Shipment>
                 </urn:AddShipment>
             </soapenv:Body>
