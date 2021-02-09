@@ -1,5 +1,7 @@
 # despatchjs
 
+Version 1.1.0
+
 A very basic JavaScript SDK for Despatch Bay SOAP API V16 Shipping Service
 
 https://github.com/despatchbay/despatchbay-api-v16/wiki
@@ -39,7 +41,7 @@ USERAGENT=WhatEverIWantToBeKnownAs
 
 Then, require `despatchjs` 
 ```javascript
-    const despatchjs = require('./xml-templates')
+    const despatchjs = require('./despatchjs')
 ```
 *Please note* : index.js at the root is full of example code.
 
