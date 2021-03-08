@@ -423,11 +423,15 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
             }
 ````
 
+---
 
+## Changelog
 
 ### Version 1.1.1 (8 March 2021)
-Added `escaper` method to escape special characters which break XML.
+Added `escaper` method to escape special characters which break XML. Sorry, this should have been done from the start...
 
+
+---
 
 MIT License
 
