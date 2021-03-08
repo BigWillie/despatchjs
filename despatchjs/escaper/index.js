@@ -6,7 +6,8 @@ module.exports = (text) => {
         }
         switch(char) {
             case "'": return '&quot;'
-            case '"': return '&apos;'
+            case '"': return '&quot;'
+            case "`": return '&apos;'
             case "<": return '&lt;'
             case ">": return '&gt;'
             case "&": return '&amp;'
