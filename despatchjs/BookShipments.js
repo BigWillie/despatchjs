@@ -1,4 +1,5 @@
 const doAjax = require('./ajax')
+const escaper = require('./escaper')
 
 module.exports = async ({ shipmentID }) => {
 
@@ -7,10 +8,10 @@ module.exports = async ({ shipmentID }) => {
     if (Array.isArray(shipmentID)) {
         // Shipments is an array - so we need to fill 
         shipmentIDs = shipments.map((x) => {
-            return `<ShipmentID xsi:type="xsd:string">${x}</ShipmentID>`
+            return `<ShipmentID xsi:type="xsd:string">${escaper(x)}</ShipmentID>`
         })
     } else {
-        shipmentIDs = `<ShipmentID xsi:type="xsd:string">${shipmentID}</ShipmentID>`
+        shipmentIDs = `<ShipmentID xsi:type="xsd:string">${escaper(shipmentID)}</ShipmentID>`
     }
 
     const xml = `<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:despatchbay" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">

@@ -1,21 +1,22 @@
 const doAjax = require('./ajax')
+const escaper = require('./escaper')
 
 module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAddressID = process.env.SENDERADDRESSID, recipientAddress, followShipment, recipientEoriNumber }) => {
 
 
     const buildRecipientAddress = ({ recipientName, recipientTelephone, recipientEmail, companyName, street, locality, townCity, county, postalCode, countryCode }) => {
         return `<RecipientAddress xsi:type="urn:RecipientAddressType">
-                    <RecipientName xsi:type="xsd:string">${recipientName}</RecipientName>
-                    <RecipientTelephone xsi:type="xsd:string">${recipientTelephone}</RecipientTelephone>
-                    <RecipientEmail xsi:type="xsd:string">${recipientEmail}</RecipientEmail>
+                    <RecipientName xsi:type="xsd:string">${escaper(recipientName)}</RecipientName>
+                    <RecipientTelephone xsi:type="xsd:string">${escaper(recipientTelephone)}</RecipientTelephone>
+                    <RecipientEmail xsi:type="xsd:string">${escaper(recipientEmail)}</RecipientEmail>
                     <RecipientAddress xsi:type="urn:AddressType">
-                        ${companyName ? '<CompanyName xsi:type="xsd:string">' + companyName + '</CompanyName>' : ''}
-                        <Street xsi:type="xsd:string">${street}</Street>
-                        ${locality ? '<Locality xsi:type="xsd:string">' + locality + '</Locality>' : ''}
-                        <TownCity xsi:type="xsd:string">${townCity}</TownCity>
-                        ${county ? '<County xsi:type="xsd:string">' + county + '</County>' : ''}
-                        ${postalCode ? '<PostalCode xsi:type="xsd:string">' + postalCode + '</PostalCode>' : ''}
-                        <CountryCode xsi:type="xsd:string">${countryCode}</CountryCode>
+                        ${companyName ? '<CompanyName xsi:type="xsd:string">' + escaper(companyName) + '</CompanyName>' : ''}
+                        <Street xsi:type="xsd:string">${escaper(street)}</Street>
+                        ${locality ? '<Locality xsi:type="xsd:string">' + escaper(locality) + '</Locality>' : ''}
+                        <TownCity xsi:type="xsd:string">${escaper(townCity)}</TownCity>
+                        ${county ? '<County xsi:type="xsd:string">' + escaper(county) + '</County>' : ''}
+                        ${postalCode ? '<PostalCode xsi:type="xsd:string">' + escaper(postalCode) + '</PostalCode>' : ''}
+                        <CountryCode xsi:type="xsd:string">${escaper(countryCode)}</CountryCode>
                     </RecipientAddress>
                 </RecipientAddress>`
     }
@@ -28,28 +29,28 @@ module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAdd
             const buildContentsArray = (contents) => {
                 return contents.map((x) => {
                     return `<Content>
-                    <Description>${x.description}</Description>
-                    <UnitQuantity>${x.unitQuantity}</UnitQuantity>
-                    <UnitWeight>${x.unitWeight}</UnitWeight>
-                    <UnitValue>${x.unitValue}</UnitValue>
+                    <Description>${escaper(x.description)}</Description>
+                    <UnitQuantity>${escaper(x.unitQuantity)}</UnitQuantity>
+                    <UnitWeight>${escaper(x.unitWeight)}</UnitWeight>
+                    <UnitValue>${escaper(x.unitValue)}</UnitValue>
                     <!-- Optional for domestic -->
-                    ${x.tariffCode ? '<TariffCode>' + x.tariffCode + '</TariffCode>' : ''}
-                    ${x.originCountryCode ? '<OriginCountryCode>' + x.originCountryCode + '</OriginCountryCode>' : ''}
+                    ${x.tariffCode ? '<TariffCode>' + escaper(x.tariffCode) + '</TariffCode>' : ''}
+                    ${x.originCountryCode ? '<OriginCountryCode>' + escaper(x.originCountryCode) + '</OriginCountryCode>' : ''}
                 </Content>`
                 })
             }
 
             return `<Parcel>
-                    <Currency>${x.currency}</Currency>
-                    <Length>${x.pLength}</Length>
-                    <Width> ${x.pWidth}</Width>
-                    <Height>${x.pHeight}</Height>
-                    <Weight>${x.pWeight}</Weight>
+                    <Currency>${escaper(x.currency)}</Currency>
+                    <Length>${escaper(x.pLength)}</Length>
+                    <Width> ${escaper(x.pWidth)}</Width>
+                    <Height>${escaper(x.pHeight)}</Height>
+                    <Weight>${escaper(x.pWeight)}</Weight>
                     <Contents xsi:type="urn:ArrayOfContentsType" soapenc:arrayType="urn:ContentsType[]">
                             ${buildContentsArray(x.contents)}
                     </Contents>
                     <!-- Optional for domestic -->
-                    ${x.exportReason ? '<ExportReason>' + x.exportReason + '</ExportReason>' : ''}
+                    ${x.exportReason ? '<ExportReason>' + escaper(x.exportReason) + '</ExportReason>' : ''}
                 </Parcel>`
         })
 
@@ -61,20 +62,19 @@ module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAdd
             <soapenv:Body>
                 <urn:AddShipment soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
                     <Shipment xsi:type="urn:ShipmentRequestType">
-                        <ServiceID>${serviceID}</ServiceID>
+                        <ServiceID>${escaper(serviceID)}</ServiceID>
                         ${buildParcelArray(parcels)}
-                        <ClientReference xsi:type="xsd:string">${orderID}</ClientReference>
+                        <ClientReference xsi:type="xsd:string">${escaper(orderID)}</ClientReference>
                         <CollectionDate xsi:type="urn:CollectionDateType">
-                            <CollectionDate xsi:type="xsd:string">${collectionDate}</CollectionDate>
+                            <CollectionDate xsi:type="xsd:string">${escaper(collectionDate)}</CollectionDate>
                         </CollectionDate>
                         <SenderAddress xsi:type="urn:SenderAddressType">
-                            <SenderAddressID xsi:type="xsd:int">${senderAddressID}</SenderAddressID>
+                            <SenderAddressID xsi:type="xsd:int">${escaper(senderAddressID)}</SenderAddressID>
                         </SenderAddress>
                         ${buildRecipientAddress(recipientAddress)}
                         ${followShipment ? '<FollowShipment xsi:type="xsd:boolean">' + followShipment + '</FollowShipment>' : ''}
-                        ${recipientEoriNumber ? '<RecipientEoriNumber xsi:type="xsd:string">' + recipientEoriNumber + '</RecipientEoriNumber>' : ''}
+                        ${recipientEoriNumber ? '<RecipientEoriNumber xsi:type="xsd:string">' + escaper(recipientEoriNumber) + '</RecipientEoriNumber>' : ''}
                         </Shipment>
-                    </Shipment>
                 </urn:AddShipment>
             </soapenv:Body>
         </soapenv:Envelope>`

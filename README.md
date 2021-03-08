@@ -1,6 +1,6 @@
 # despatchjs
 
-Version 1.1.0
+Version 1.1.1
 
 A very basic JavaScript SDK for Despatch Bay SOAP API V16 Shipping Service
 
@@ -424,6 +424,11 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
 ````
 
 
+
+### Version 1.1.1 (8 March 2021)
+Added `escaper` method to escape special characters which break XML.
+
+
 MIT License
 
 Copyright (c) 2021 Robert Willie
@@ -445,5 +450,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-# despatchjs

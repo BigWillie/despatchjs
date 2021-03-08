@@ -1,4 +1,5 @@
 const doAjax = require('./ajax')
+const escaper = require('./escaper')
 
 module.exports = async ({collectionID}) => {
 
@@ -6,7 +7,7 @@ module.exports = async ({collectionID}) => {
     <soapenv:Header/>
     <soapenv:Body>
         <urn:GetCollection soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-            <CollectionID xsi:type="xsd:string">${collectionID}</CollectionID>
+            <CollectionID xsi:type="xsd:string">${escaper(collectionID)}</CollectionID>
         </urn:GetCollection>
     </soapenv:Body>
 </soapenv:Envelope>`

@@ -164,12 +164,12 @@ const testing = async () => {
    console.log("Test: Each SOAP Method's response as JSON. Please see data object in each test method to what is needed.")
 
    console.log('1. get available services')
-   const availableServices = await getAvailableServices()
-   console.log(JSON.stringify(availableServices, null, 2))
+   const AvailableServices = await getAvailableServices()
+   console.log(JSON.stringify(AvailableServices, null, 2))
 
    console.log('2. get available collection dates')
-   const availableCollectionDates = await getAvailableCollectionDates()
-   console.log(JSON.stringify(availableCollectionDates, null, 2))
+   const AvailableCollectionDates = await getAvailableCollectionDates()
+   console.log(JSON.stringify(AvailableCollectionDates, null, 2))
 
    console.log('3. add shipping')
    const AddShipment = await addShipment()
