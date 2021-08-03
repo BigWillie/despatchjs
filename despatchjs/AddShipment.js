@@ -1,7 +1,7 @@
 const doAjax = require('./ajax')
 const escaper = require('./escaper')
 
-module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAddressID = process.env.SENDERADDRESSID, recipientAddress, followShipment, recipientEoriNumber }) => {
+module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAddressID = process.env.SENDERADDRESSID, recipientAddress, followShipment, recipientEoriNumber, IOSSNumber }) => {
 
 
     const buildRecipientAddress = ({ recipientName, recipientTelephone, recipientEmail, companyName, street, locality, townCity, county, postalCode, countryCode }) => {
@@ -73,6 +73,7 @@ module.exports = async ({ serviceID, parcels, orderID, collectionDate, senderAdd
                         </SenderAddress>
                         ${buildRecipientAddress(recipientAddress)}
                         ${followShipment ? '<FollowShipment xsi:type="xsd:boolean">' + followShipment + '</FollowShipment>' : ''}
+                        ${IOSSNumber ? '<IossNumber" xsi:type="xsd:string" minOccurs="0" maxOccurs="1">' + IOSSNumber + '</IossNumber>' : ''}
                         ${recipientEoriNumber ? '<RecipientEoriNumber xsi:type="xsd:string">' + escaper(recipientEoriNumber) + '</RecipientEoriNumber>' : ''}
                         </Shipment>
                 </urn:AddShipment>

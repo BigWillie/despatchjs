@@ -1,7 +1,7 @@
 const doAjax = require('./ajax')
 const escaper = require('./escaper')
 
-module.exports = async ({ parcels, senderAddressID = process.env.SENDERADDRESSID, recipientAddress}) => {
+module.exports = async ({ parcels, senderAddressID = process.env.SENDERADDRESSID, recipientAddress, IOSSNumber}) => {
 	
 	// JS doesn't have private methods - so encapsulate these here
 
@@ -68,6 +68,7 @@ module.exports = async ({ parcels, senderAddressID = process.env.SENDERADDRESSID
 					<SenderAddressID xsi:type="xsd:int">${escaper(senderAddressID)}</SenderAddressID>
                 </SenderAddress>
 				${buildRecipientAddress(recipientAddress)}
+                ${IOSSNumber ? '<IossNumber" xsi:type="xsd:string" minOccurs="0" maxOccurs="1">' + IOSSNumber + '</IossNumber>' : ''}
             </Shipment>
         </urn:GetAvailableServices>
     </soapenv:Body>

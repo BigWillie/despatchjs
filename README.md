@@ -1,6 +1,6 @@
 # despatchjs
 
-Version 1.1.1
+Version 1.1.2
 
 A very basic JavaScript SDK for Despatch Bay SOAP API V16 Shipping Service
 
@@ -110,7 +110,8 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
       county: 'London', // String. County
       postalCode: 'SW1A1AA', // String. Postal code (optional for countries without postcodes)
       countryCode: 'GB', // String. ISO 3166-1 alpha-2 code
-   }
+   },
+   IOSSNumber : '1234567' // 12 digit IOSS number (optional)
 }
 
 return await despatchjs.getAvailableServices(data)
@@ -209,7 +210,8 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
           postalCode: 'SW1A1AA', // String. Postal code (optional for countries without postcodes)
           countryCode: 'GB', // String. ISO 3166-1 alpha-2 code
        },
-      recipientEoriNumber: 'XXXXXX' // EORI number of recipient (optional - if recipient is an EU business)
+      recipientEoriNumber: 'XXXXXX', // EORI number of recipient (optional - if recipient is an EU business)
+      IOSSNumber : '1234567' // 12 digit IOSS number (optional)
    }
 
    return await despatchjs.addShipment(data)
@@ -426,6 +428,10 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
 ---
 
 ## Changelog
+
+### Version 1.1.1 (8 March 2021)
+Added support for IOSS - pass your 12 digit IOSS number in to GetAvailableServices and AddShipment
+
 
 ### Version 1.1.1 (8 March 2021)
 Added `escaper` method to escape special characters which break XML. Sorry, this should have been done from the start...

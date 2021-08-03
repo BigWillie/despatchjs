@@ -9,7 +9,8 @@ const addShipment = async () => {
     orderID: '12345',
       serviceID: '9992',
       collectionDate: '2021-01-18',
-      followShipment: false // Follow the shipment on the Despatch Bay dashboard (optional)
+      followShipment: false, // Follow the shipment on the Despatch Bay dashboard (optional),
+      IOSSNumber : '1234567' // 12 digit IOSS number (optional)
    }
 
    // An Array of parcels
