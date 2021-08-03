@@ -429,7 +429,7 @@ https://github.com/despatchbay/despatchbay-api-v16/wiki/Shipping-Service#export-
 
 ## Changelog
 
-### Version 1.1.1 (8 March 2021)
+### Version 1.1.2 (3 August 2021)
 Added support for IOSS - pass your 12 digit IOSS number in to GetAvailableServices and AddShipment
 
 
